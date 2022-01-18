@@ -1,14 +1,13 @@
 import json
 
-from pprint import pprint
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-
+from more_itertools import chunked
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+
 
 def render_books():
     with open('books.json', 'r') as file:
         books_json = file.read()
-    books = json.loads(books_json)
+    books = list(chunked(json.loads(books_json)[:10], 2))
 
     env = Environment(
         loader=FileSystemLoader('.'),
@@ -16,7 +15,7 @@ def render_books():
     )
     template = env.get_template('template.html')
 
-    rendered_page = template.render(books=books[:10])
+    rendered_page = template.render(books=books)
 
     with open('index.html', 'w', encoding='utf8') as file:
         file.write(rendered_page)
