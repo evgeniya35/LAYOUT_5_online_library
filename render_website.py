@@ -5,9 +5,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-
-
-def main():
+def render_books():
     with open('books.json', 'r') as file:
         books_json = file.read()
     books = json.loads(books_json)
@@ -23,6 +21,8 @@ def main():
     with open('index.html', 'w', encoding='utf8') as file:
         file.write(rendered_page)
 
+def main():
+    render_books()
 
 if __name__ == '__main__':
     main()
