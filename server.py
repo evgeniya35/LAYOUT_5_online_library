@@ -8,4 +8,4 @@ load_books()
 
 server = Server()
 server.watch('template.html', load_books)
-server.serve(root='.')
+server.serve(root='.', default_filename='pages/index1.html')
