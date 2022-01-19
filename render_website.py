@@ -28,7 +28,7 @@ def load_books():
 
     with open('books.json', 'r') as file:
         books_json = file.read()
-    
+
     books = list(chunked(json.loads(books_json), 2))
 
     for i, books_page in enumerate(list(chunked(books, books_on_page)), 1):
