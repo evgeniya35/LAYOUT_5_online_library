@@ -31,12 +31,12 @@ def make_pages():
 
     books = list(chunked(json.loads(books_json), 2))
 
-    for i, books_page in enumerate(list(chunked(books, books_on_page)), 1):
+    for number, books_page in enumerate(list(chunked(books, books_on_page)), 1):
         render_page(
-            os.path.join(pages_folder, f'index{i}.html'),
+            os.path.join(pages_folder, f'index{number}.html'),
             books_page,
             ceil(len(books) / books_on_page),
-            i
+            number
             )
 
 
