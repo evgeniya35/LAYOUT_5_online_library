@@ -20,7 +20,7 @@ def render_page(page, books, count_pages, current_page):
         file.write(rendered_page)
 
 
-def load_books():
+def make_pages():
     pages_folder = os.path.join(os.path.dirname(__file__), 'pages')
     os.makedirs(pages_folder, exist_ok=True)
 
@@ -41,7 +41,7 @@ def load_books():
 
 
 def main():
-    load_books()
+    make_pages()
 
 
 if __name__ == '__main__':
